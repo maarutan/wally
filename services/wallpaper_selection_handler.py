@@ -25,12 +25,14 @@ class WallpaperSelectionHandler(WshArgs):
                     "all_file_names": [],
                     "favorites": [],
                     "current_wallpaper": [],
+                    "current_theme": [],
                     "theme": [],
                 },
                 "live": {
                     "all_file_names": [],
                     "favorites": [],
                     "current_wallpaper": [],
+                    "current_theme": [],
                     "theme": [],
                 },
             }
@@ -47,6 +49,7 @@ class WallpaperSelectionHandler(WshArgs):
             "all_file_names": [],
             "favorites": [],
             "current_wallpaper": [],
+            "current_theme": [],
             "theme": [],
         }
 
@@ -64,6 +67,10 @@ class WallpaperSelectionHandler(WshArgs):
 
             if is_active and not result["current_wallpaper"]:
                 result["current_wallpaper"].append(filename)
+                if theme_match:
+                    theme = theme_match.group(1).rstrip("_")
+                    if theme not in result["current_wallpaper"]:
+                        result["current_theme"].append(theme)
 
             if is_favorite:
                 result["favorites"].append(filename)
