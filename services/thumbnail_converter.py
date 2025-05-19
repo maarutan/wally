@@ -33,6 +33,5 @@ class ThumbnailConverter:
         current_thumbnail.unlink(missing_ok=True)
 
 
-Th = ThumbnailConverter
-thumbnail_video_convert = Th.video_convert
-thumbnail_image_convert = Th.image_convert
+thumbnail_video_convert = ThumbnailConverter().video_convert
+thumbnail_image_convert = ThumbnailConverter().image_convert

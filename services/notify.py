@@ -43,5 +43,4 @@ class NotifySend:
         shell(join_args)
 
 
-n = NotifySend
-notify_send = n
+notify_send = NotifySend().send

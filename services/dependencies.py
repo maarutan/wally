@@ -1,7 +1,6 @@
 import os
 from shutil import which
 
-
 x11 = [
     "feh",
     "mpv",

@@ -1,0 +1,2 @@
+Info   | config image_convert: ThumbnailConverter.image_convert() missing 1 required positional argument: 'output' | 20.05.2025 | 3:37:17
+Info   | config image_convert: ThumbnailConverter.image_convert() missing 1 required positional argument: 'self' | 20.05.2025 | 3:38:20
