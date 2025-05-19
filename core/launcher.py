@@ -1,0 +1,22 @@
+from services import WSH
+from services import thumbnail_image_convert, thumbnail_video_convert
+from core import conf_get_root_dir, conf_get_static_dir, conf_get_live_dir
+from pathlib import Path
+import os
+# from services import
+
+
+class Launcher:
+    def __init__(self):
+        self.root_dir = conf_get_root_dir()
+        self.live = Path(conf_get_live_dir())
+        self.static = Path(conf_get_static_dir())
+        self.Wsh = WSH
+
+        self.thumbnail_image_convert = thumbnail_image_convert
+        self.thumbnail_video_convert = thumbnail_video_convert
+        self.handler = WSH(live_path=self.live, static_path=self.static)
+        self.handler.refresh_wallpaper_data()
+
+
+launcher = Launcher
