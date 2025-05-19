@@ -11,9 +11,15 @@ class WshArgs:
 
 
 class WallpaperSelectionHandler(WshArgs):
-    def __init__(self, live_path: Path, static_path: Path) -> None:
+    def __init__(
+        self,
+        live_path: Path,
+        static_path: Path,
+        root_dir: Path,
+    ) -> None:
         self.live_path = live_path
         self.static_path = static_path
+        self.root_dir = root_dir
         from core import DATABASE_WALLY
 
         self.json_path = Path(DATABASE_WALLY)
@@ -44,7 +50,7 @@ class WallpaperSelectionHandler(WshArgs):
             return []
         return [file.name for file in directory.iterdir() if file.is_file()]
 
-    def classify_files(self, file_list: list[str]) -> dict:
+    def classify_files(self, file_list: list[str], subfolder: str) -> dict:
         result = {
             "all_file_names": [],
             "favorites": [],
@@ -66,7 +72,8 @@ class WallpaperSelectionHandler(WshArgs):
                     result["theme"].append(theme)
 
             if is_active and not result["current_wallpaper"]:
-                result["current_wallpaper"].append(filename)
+                full_path = self.root_dir / subfolder / filename
+                result["current_wallpaper"].append(str(full_path))
                 if theme_match:
                     theme = theme_match.group(1).rstrip("_")
                     if theme not in result["current_wallpaper"]:
@@ -81,7 +88,7 @@ class WallpaperSelectionHandler(WshArgs):
     def refresh_wallpaper_data(self) -> None:
         for kind, path in {"static": self.static_path, "live": self.live_path}.items():
             files = self.get_file_list(path)
-            classified = self.classify_files(files)
+            classified = self.classify_files(files, subfolder=kind)
             self.data_dict[kind] = classified
 
         self.Jm.write(self.data_dict, indent=2)

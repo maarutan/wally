@@ -15,7 +15,11 @@ class Launcher:
 
         self.thumbnail_image_convert = thumbnail_image_convert
         self.thumbnail_video_convert = thumbnail_video_convert
-        self.handler = WSH(live_path=self.live, static_path=self.static)
+        self.handler = WSH(
+            live_path=self.live,
+            static_path=self.static,
+            root_dir=self.root_dir,
+        )
         self.handler.refresh_wallpaper_data()
 
 
