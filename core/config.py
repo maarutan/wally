@@ -40,13 +40,18 @@ class ConfigHandler:
         raw_path = self.get_config_option(key)
         return Path(os.path.expanduser(raw_path))
 
+    @log_exceptions
+    def get_relative_path(self, key: str) -> Path:
+        raw_path = self.get_config_option(key)
+        return Path(raw_path)
+
 
 config_handler = ConfigHandler()
 
 conf_generate_config = config_handler.generate_config
 conf_get_data = config_handler.get_config
 conf_get_root_dir = lambda: config_handler.get_expanded_path("root_dir")
-conf_get_static_dir = lambda: config_handler.get_expanded_path("static_dir")
-conf_get_live_dir = lambda: config_handler.get_expanded_path("live_dir")
+conf_get_static_dir = lambda: config_handler.get_relative_path("static_dir")
+conf_get_live_dir = lambda: config_handler.get_relative_path("live_dir")
 
 DATABASE_WALLY = conf_get_root_dir() / "database.json"
