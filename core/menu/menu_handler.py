@@ -9,7 +9,11 @@ from services import (
     is_nerdfonts,
     rofi,
 )
-from services import JsonManager, FileManager
+from services import (
+    JsonManager,
+    FileManager,
+    WSDataBaseHandler,
+)
 from utils import log_exceptions
 from dataclasses import dataclass
 from sys import exit
@@ -17,6 +21,8 @@ from sys import exit
 
 class MenuHandler:
     def __init__(self):
+        self.Fm = FileManager
+        self.DBws = WSDataBaseHandler
         self.main_options = [e.value for e in MainMenu]
         self.wallpapers_options = [e.value for e in WallpapersMenu]
         self.wallpaper_favorites_options = [e.value for e in FavoritesMenu]
@@ -48,7 +54,6 @@ class MenuHandler:
                 self.wallpapers_options_handler()
             case _:
                 self.wallpapers_options_handler()
-        ...
 
     def all_options_handler(self): ...
 
