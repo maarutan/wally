@@ -7,10 +7,11 @@ from .notify import notify_send
 from .thumbnail_converter import thumbnail_video_convert, thumbnail_image_convert
 from .rofi import rofi
 from .is_nerdfonts import is_nerdfonts
-from .wallpaper_selection_handler import WSH
+from .wallpaper_selection import wallpaper_selection
+from .wallpaper_selection_data_base_handler import WSDataBaseHandler
 
 __all__ = [
-    "WSH",
+    "wallpaper_selection",
     "FileManager",
     "JsonManager",
     "notify_send",
@@ -21,4 +22,5 @@ __all__ = [
     "thumbnail_image_convert",
     "rofi",
     "is_nerdfonts",
+    "WSDataBaseHandler",
 ]

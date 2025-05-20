@@ -10,15 +10,15 @@ class WshArgs:
     data_dict: dict
 
 
-class WallpaperSelectionHandler(WshArgs):
+class WallpaperSelection(WshArgs):
     def __init__(
         self,
         live_path: Path,
         static_path: Path,
         root_dir: Path,
     ) -> None:
-        self.live_path = live_path
-        self.static_path = static_path
+        self.live_path = root_dir / live_path
+        self.static_path = root_dir / static_path
         self.root_dir = root_dir
         from core import DATABASE_WALLY
 
@@ -27,19 +27,20 @@ class WallpaperSelectionHandler(WshArgs):
 
         super().__init__(
             data_dict={
+                "root_dir": str(self.root_dir),
                 "static": {
                     "all_file_names": [],
                     "favorites": [],
                     "current_wallpaper": [],
                     "current_theme": [],
-                    "theme": [],
+                    "themes": [],
                 },
                 "live": {
                     "all_file_names": [],
                     "favorites": [],
                     "current_wallpaper": [],
                     "current_theme": [],
-                    "theme": [],
+                    "themes": [],
                 },
             }
         )
@@ -56,7 +57,7 @@ class WallpaperSelectionHandler(WshArgs):
             "favorites": [],
             "current_wallpaper": [],
             "current_theme": [],
-            "theme": [],
+            "themes": [],
         }
 
         for filename in file_list:
@@ -68,8 +69,8 @@ class WallpaperSelectionHandler(WshArgs):
             theme_match = re.match(r"^\*?([a-zA-Z0-9]+_)", filename)
             if theme_match:
                 theme = theme_match.group(1).rstrip("_")
-                if theme not in result["theme"]:
-                    result["theme"].append(theme)
+                if theme not in result["themes"]:
+                    result["themes"].append(theme)
 
             if is_active and not result["current_wallpaper"]:
                 full_path = self.root_dir / subfolder / filename
@@ -97,4 +98,4 @@ class WallpaperSelectionHandler(WshArgs):
         return ""
 
 
-WSH = WallpaperSelectionHandler
+wallpaper_selection = WallpaperSelection
