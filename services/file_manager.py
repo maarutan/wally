@@ -61,10 +61,12 @@ class FileManager:
         except Exception as e:
             print(f"Error FileMnager: {e}")
 
-    def read(self) -> str:
+    def read(self):
+        if not self.path.exists():
+            return ""
         try:
-            with open(self.path, "r") as f:
-                return str(f.read())
+            with open(self.path, "r", encoding="utf-8") as f:
+                return f.read()
         except Exception as e:
-            print(f"Error FileMnager: {e}")
+            print(f"Error FileManager: {e}")
             return ""

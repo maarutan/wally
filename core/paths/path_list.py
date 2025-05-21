@@ -8,6 +8,10 @@ PYPROJECT_PATH = Path(__file__).parent.parent.parent / "pyproject.toml"
 JSONC_CONFIGURE = HOME / ".config" / "wally" / "config.jsonc"
 TMP = Path(tempfile.gettempdir())
 WALLY_THUMBNAIL = TMP / "wally_thumbnail"
+LOCAL = HOME / ".local"
+LOCAL_WALLY = LOCAL / "share" / "wally"
+LOCAL_WALLY_JSONC_CONFIG = LOCAL_WALLY / "config.jsonc"
+
 
 CACHE = HOME / ".cache"
 CACHE_WALLY_DIR = CACHE / "wally"

@@ -1,6 +1,5 @@
 from .config import (
     conf_get_data,
-    conf_generate_config,
     conf_get_root_dir,
     conf_get_live_dir,
     conf_get_static_dir,
@@ -21,11 +20,17 @@ from core.paths.path_list import (
     LOGFILE,
     WALLY_THUMBNAIL,
     HOME,
+    LOCAL_WALLY_JSONC_CONFIG,
     CACHE,
+    LOCAL_WALLY,
+    LOCAL,
 )
 
 
 __all__ = [
+    "LOCAL_WALLY",
+    "LOCAL",
+    "LOCAL_WALLY_JSONC_CONFIG",
     "MainMenu",
     "conf_get_root_dir",
     "WallpapersMenu",
@@ -38,7 +43,6 @@ __all__ = [
     "CACHE",
     "path_handler",
     "conf_get_data",
-    "conf_generate_config",
     "conf_get_static_dir",
     "DATABASE_WALLY",
     "conf_get_live_dir",

@@ -8,25 +8,31 @@ from core import (
 )
 from .path_list import (
     LOGFILE,
+    LOCAL_WALLY,
+    LOCAL,
     JSONC_CONFIGURE,
     TMP,
     WALLY_THUMBNAIL,
+    LOCAL_WALLY_JSONC_CONFIG,
     CACHE,
     CACHE_WALLY_DIR,
 )
 
 
 check_exist = [
+    conf_get_root_dir(),
+    conf_get_static_dir(),
+    conf_get_live_dir(),
+    DATABASE_WALLY,
     LOGFILE,
     JSONC_CONFIGURE,
     TMP,
     WALLY_THUMBNAIL,
     CACHE,
+    LOCAL_WALLY_JSONC_CONFIG,
+    LOCAL_WALLY,
+    LOCAL,
     CACHE_WALLY_DIR,
-    Path(f"{conf_get_root_dir()}"),
-    Path(f"{conf_get_static_dir()}"),
-    Path(f"{conf_get_live_dir()}"),
-    DATABASE_WALLY,
 ]
 
 
