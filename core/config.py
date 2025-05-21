@@ -13,9 +13,18 @@ class ConfigHandler:
         self.default_config = """{
   "root_dir": "~/Pictures/wallpapers",
   "static_dir": "static",
-  "live_dir": "live"
-}
-        """
+  "live_dir": "live",
+  "live_extensions": [ 
+    "mp4",
+    "gif"
+  ],
+  "static_extensions": [ 
+    "jpg",
+    "jpeg",
+    "png",
+    "webp"
+  ]
+}"""
         self.config_data = None
 
     @log_exceptions
@@ -46,6 +55,14 @@ class ConfigHandler:
         abs_path = self.get_expanded_path("root_dir")
         return Path.joinpath(abs_path, raw_path)
 
+    @log_exceptions
+    def get_live_extensions(self):
+        return self.get_config_option("live_extensions")
+
+    @log_exceptions
+    def get_static_extensions(self):
+        return self.get_config_option("static_extensions")
+
 
 config_handler = ConfigHandler()
 
@@ -55,4 +72,13 @@ conf_get_root_dir = lambda: config_handler.get_expanded_path("root_dir")
 conf_get_static_dir = lambda: config_handler.get_relative_path("static_dir")
 conf_get_live_dir = lambda: config_handler.get_relative_path("live_dir")
 
-DATABASE_WALLY = conf_get_root_dir() / "database.json"
+
+_root = conf_get_root_dir()
+if not _root:
+    try:
+        conf_generate_config()
+        _root = conf_get_root_dir()
+    except Exception:
+        _root = Path.home()
+
+DATABASE_WALLY = (_root / "database.json") if _root else Path.home() / ".database.json"

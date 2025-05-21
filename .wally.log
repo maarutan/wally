@@ -1,3 +1,27 @@
-Info   | config image_convert: ThumbnailConverter.image_convert() missing 1 required positional argument: 'output' | 20.05.2025 | 3:37:17
-Info   | config image_convert: ThumbnailConverter.image_convert() missing 1 required positional argument: 'self' | 20.05.2025 | 3:38:20
-Info   | config refresh_wallpaper_data: 'theme' | 20.05.2025 | 18:22:25
+Info   | config get_config: Expecting value: line 1 column 1 (char 0) | 21.05.2025 | 17:46:02
+Info   | config get_config_option: 'NoneType' object has no attribute 'get' | 21.05.2025 | 17:46:02
+Info   | config get_expanded_path: expected str, bytes or os.PathLike object, not NoneType | 21.05.2025 | 17:46:02
+Info   | config get_config: Expecting value: line 1 column 1 (char 0) | 21.05.2025 | 17:46:02
+Info   | config get_config_option: 'NoneType' object has no attribute 'get' | 21.05.2025 | 17:46:02
+Info   | config get_expanded_path: expected str, bytes or os.PathLike object, not NoneType | 21.05.2025 | 17:46:02
+Info   | config get_config: Expecting value: line 1 column 1 (char 0) | 21.05.2025 | 17:46:02
+Info   | config get_config_option: 'NoneType' object has no attribute 'get' | 21.05.2025 | 17:46:02
+Info   | config get_config: Expecting value: line 1 column 1 (char 0) | 21.05.2025 | 17:46:02
+Info   | config get_config_option: 'NoneType' object has no attribute 'get' | 21.05.2025 | 17:46:02
+Info   | config get_expanded_path: expected str, bytes or os.PathLike object, not NoneType | 21.05.2025 | 17:46:02
+Info   | config get_relative_path: 'NoneType' object has no attribute 'with_segments' | 21.05.2025 | 17:46:02
+Info   | config get_config: Expecting value: line 1 column 1 (char 0) | 21.05.2025 | 17:46:02
+Info   | config get_config_option: 'NoneType' object has no attribute 'get' | 21.05.2025 | 17:46:02
+Info   | config get_config: Expecting value: line 1 column 1 (char 0) | 21.05.2025 | 17:46:02
+Info   | config get_config_option: 'NoneType' object has no attribute 'get' | 21.05.2025 | 17:46:02
+Info   | config get_expanded_path: expected str, bytes or os.PathLike object, not NoneType | 21.05.2025 | 17:46:02
+Info   | config get_relative_path: 'NoneType' object has no attribute 'with_segments' | 21.05.2025 | 17:46:02
+Info   | config get_config: Expecting value: line 1 column 1 (char 0) | 21.05.2025 | 18:00:41
+Info   | config get_config_option: 'NoneType' object has no attribute 'get' | 21.05.2025 | 18:00:41
+Info   | config get_expanded_path: expected str, bytes or os.PathLike object, not NoneType | 21.05.2025 | 18:00:41
+Info   | config get_config: Expecting value: line 1 column 1 (char 0) | 21.05.2025 | 18:01:52
+Info   | config get_config_option: 'NoneType' object has no attribute 'get' | 21.05.2025 | 18:01:52
+Info   | config get_expanded_path: expected str, bytes or os.PathLike object, not NoneType | 21.05.2025 | 18:01:52
+Info   | config get_config: Expecting value: line 1 column 1 (char 0) | 21.05.2025 | 18:04:40
+Info   | config get_config_option: 'NoneType' object has no attribute 'get' | 21.05.2025 | 18:04:40
+Info   | config get_expanded_path: expected str, bytes or os.PathLike object, not NoneType | 21.05.2025 | 18:04:40
