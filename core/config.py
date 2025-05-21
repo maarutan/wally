@@ -43,7 +43,8 @@ class ConfigHandler:
     @log_exceptions
     def get_relative_path(self, key: str) -> Path:
         raw_path = self.get_config_option(key)
-        return Path(raw_path)
+        abs_path = self.get_expanded_path("root_dir")
+        return Path.joinpath(abs_path, raw_path)
 
 
 config_handler = ConfigHandler()

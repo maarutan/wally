@@ -2,7 +2,8 @@ from .shell import shell
 from .file_manager import FileManager
 from .logger import MessageHandler
 from .json_manager import JsonManager
-from .dependencies import check_your_session_type
+from .dependencies.dependencies_enum import X11, Wayland
+from .dependencies.dependencies import CheckDependencies
 from .notify import notify_send
 from .thumbnail_converter import thumbnail_video_convert, thumbnail_image_convert
 from .rofi import rofi
@@ -16,7 +17,9 @@ __all__ = [
     "JsonManager",
     "notify_send",
     "shell",
-    "check_your_session_type",
+    "X11",
+    "Wayland",
+    "CheckDependencies",
     "MessageHandler",
     "thumbnail_video_convert",
     "thumbnail_image_convert",
