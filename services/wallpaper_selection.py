@@ -27,8 +27,10 @@ class WallpaperSelection(WshArgs):
 
         super().__init__(
             data_dict={
+                "current_state": "static",
                 "root_dir": str(self.root_dir),
                 "static": {
+                    "enabled": False,
                     "all_file_names": [],
                     "favorites": [],
                     "current_wallpaper": [],
@@ -36,11 +38,15 @@ class WallpaperSelection(WshArgs):
                     "themes": [],
                 },
                 "live": {
+                    "enabled": False,
                     "all_file_names": [],
                     "favorites": [],
                     "current_wallpaper": [],
                     "current_theme": [],
                     "themes": [],
+                },
+                "rofi": {
+                    "type": "",
                 },
             }
         )
@@ -53,6 +59,7 @@ class WallpaperSelection(WshArgs):
 
     def classify_files(self, file_list: list[str], subfolder: str) -> dict:
         result = {
+            "enabled": False,
             "all_file_names": [],
             "favorites": [],
             "current_wallpaper": [],
@@ -90,7 +97,22 @@ class WallpaperSelection(WshArgs):
         for kind, path in {"static": self.static_path, "live": self.live_path}.items():
             files = self.get_file_list(path)
             classified = self.classify_files(files, subfolder=kind)
+            classified["enabled"] = self.data_dict.get(kind, {}).get("enabled", False)
             self.data_dict[kind] = classified
+
+        static_enabled = self.data_dict["static"]["enabled"]
+        live_enabled = self.data_dict["live"]["enabled"]
+
+        if static_enabled and live_enabled:
+            self.data_dict["live"]["enabled"] = False
+            self.data_dict["current_state"] = "static"
+        elif static_enabled:
+            self.data_dict["current_state"] = "static"
+        elif live_enabled:
+            self.data_dict["current_state"] = "live"
+        else:
+            self.data_dict["static"]["enabled"] = True
+            self.data_dict["current_state"] = "static"
 
         self.Jm.write(self.data_dict, indent=2)
 

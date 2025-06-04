@@ -20,9 +20,4 @@ from services import WSDataBaseHandler
 
 if __name__ == "__main__":
     print(menu_wally())
-    print(
-        WSDataBaseHandler(
-            Path("/home/maaru/Pictures/wallpapers/database.json")
-        ).get_current_wallpaper("static")
-    )
     launcher()

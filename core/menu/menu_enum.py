@@ -9,6 +9,7 @@ class MainMenu(Enum):
 
 class WallpapersMenu(Enum):  # ----{{{{
     FAVORITES = "favorites"
+    TYPE = "type"
     THEME = "theme"
     RANDOM = "random"
     ALL = "all"

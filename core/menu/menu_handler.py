@@ -25,6 +25,7 @@ class MenuHandler:
         self.DBws = WSDataBaseHandler
         self.main_options = [e.value for e in MainMenu]
         self.wallpapers_options = [e.value for e in WallpapersMenu]
+        self.wallpapers_type = [e.value for e in WallpapersMenu]
         self.wallpaper_favorites_options = [e.value for e in FavoritesMenu]
         self.wallpaper_theme_options = [e.value for e in ThemeMenu]
         self.wallpaper_random_options = [e.value for e in RandomMenu]
@@ -38,6 +39,8 @@ class MenuHandler:
                 self.favorites_options_handler()
             case "theme":
                 self.theme_options_handler()
+            case "type":
+                self.type_options_handler()
             case "random":
                 self.random_wallpaper_options_handler()
             case "all":
@@ -46,6 +49,14 @@ class MenuHandler:
                 self.menu_state_handler()
             case _:
                 self.menu_state_handler()
+
+    def type_options_handler(self):
+        rm = rofi(self.wallpapers_type).dmenu()
+        match rm:
+            case "back":
+                self.wall_type_gallery()
+            case _:
+                self.wall_type_row_gallery()
 
     def theme_options_handler(self):
         rm = rofi(self.wallpaper_theme_options).dmenu()
@@ -103,6 +114,10 @@ class MenuHandler:
         # rm = rofi()dmenu()
         ...
 
+    def rofi_options_handler(self):
+        # rm = rofi()dmenu()
+        ...
+
     @log_exceptions
     def menu_state_handler(self):
         rofi_menu = rofi
@@ -111,6 +126,8 @@ class MenuHandler:
         match rm:
             case MainMenu.WALLPAPERS.value:
                 self.wallpapers_options_handler()
+            case "rofi":
+                self.rofi_options_handler()
             case "paths":
                 print("paths")
             case "exit":
